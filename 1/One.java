@@ -3,8 +3,9 @@ public class One {
     public static void main(String[] args) {
         int multipleA = 3;
         int multipleB = 5;
-        int n = 999;
+        int n = 999; // Since 1000 is not incluided. Can reduce in method but this seemed easy
         System.out.println(one(multipleA, multipleB, n));
+        System.out.println(oneJ8(multipleA, multipleB, n));
     }
 
     public static int one(int a, int b, int n) {
@@ -16,4 +17,21 @@ public class One {
         int comm = (maxCommon * (maxCommon + 1)) / 2;
         return (aCount * a) + (bCount * b) - (comm * (a * b));
     }
+
+    public static int oneJ8(int a, int b, int n) {
+        Operation divisor = (p, q) -> p / q;
+        Count count = p -> ((p * (p + 1)) / 2);
+        Operation multiple = (p , q) -> p * q;
+        return multiple.of(a, count.induction(divisor.of(n, a))) 
+            + multiple.of(b, count.induction(divisor.of(n, b)))
+            -multiple.of((a * b), count.induction(divisor.of(n, (a * b))));
+    }
+}
+
+interface Count {
+    int induction(int n);    
+}
+
+interface Operation {
+    int of (int n, int d);
 }
