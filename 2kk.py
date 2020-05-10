@@ -1,3 +1,4 @@
+# Sum of even Fibonacci numbers that are below 4000000
 
 def fib(n):
     a = 1
