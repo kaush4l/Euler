@@ -9,8 +9,11 @@ def isPrime(n):
     else:
         return False
 
-def gcd(a, b):
-    isCalculating = True
-    while isCalculating:
+# Either have list of primes and iteratively reduce list when number is prime
+# answer when list is empty
+
+# def gcd(a, b):
+#     isCalculating = True
+#     while isCalculating:
 
 # 232792560

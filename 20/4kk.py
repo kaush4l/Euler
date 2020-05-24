@@ -13,13 +13,15 @@ def isPalindromeAlt(num):
         return True
     return False
 
-def maxNumber(): # Optimaztion to maybe take the number of digits as input and work on that
+def maxNumber(n):
     max = 0
-    for x in range(100, 1000): # Maybe not ideal as this is brute force
-        for y in range(100, 1000): # But since Euler was just asking for answer
+    for x in range(10**n, 10**(n-1), -1):
+    # for x in range(10**(n-1), 10**n):
+        for y in range(10**n, x, -1): # Checking till reduced loops by half and works 
+        # for y in range(10**(n-1), 10**n):
             z = x * y
             if isPalindrome(z) and z > max:
                 max = z
     return max
 
-print(maxNumber())
+print(maxNumber(3))
